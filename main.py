@@ -73,8 +73,16 @@ with st.expander("What's this?"):
                    "HARD":"Despite difficulties,perseverance and hard work lead to success."}
                level = st.selectbox("choose Level",list(passages.keys()))
                st.success(passages[level])
-                
-               
+               if st.button ("Start test"):
+                   st.warning("Test running for 15s Read aloud and look at the screen!")
+                   with ThreadPoolExecutor() as executor:
+                       gaze_result=executor.submit(capture_gaze,15)
+                       voice_result=executor.submit(record_voice, 15, passages[level])
+                       gaze_data =gaze_result.result()
+                       spoken_text,voice_score = voice_result.result()
+st.divider()
+st.header("✅ Test Results")
+
 
 
                                                
