@@ -15,7 +15,7 @@ st.caption("Track your reading and voice clarity. Not a medical tool!")
 st.divider()
 
 with st.expander("What's this?"):
-    st.write ("""
+     st.write ("""
          This is a little tool to:
          -Track your eye directions while reading .
          -Listen to what you read.
