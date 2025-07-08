@@ -14,4 +14,12 @@ st.title("🧠Dyslexia Eye and Reading Test")
 st.caption("Track your reading and voice clarity. Not a medical tool!")
 st.divider()
 
-
+with st.expander("What's this?"):
+    st.write ("""
+         This is a little tool to:
+         -Track your eye directions while reading .
+         -Listen to what you read.
+         -Show simple reading clarity.
+         -Show a simple reading clarity score.
+        Just for learning ,Not a daignosis !
+    """)
