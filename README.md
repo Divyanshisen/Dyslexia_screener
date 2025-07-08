@@ -17,8 +17,8 @@ git clone https://github.com/antoinelame/GazeTracking.git
 it has gaze tracking and pretrained model [face landmark detect - shape_predictor_68_face_landmarks.dat]
 
 
-# how it works 
-in terminal type stramlit run main.py
+# How it works 
+In terminal type streamlit run main.py
 click start test -webcam and microphone will activated
 for 15 seconds 
 Read the passage loud 
