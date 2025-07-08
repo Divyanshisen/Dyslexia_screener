@@ -14,7 +14,7 @@
 pip install Opencv-python stramlit SpeechRecognition matplotlib pandas 
 install dlib
 git clone https://github.com/antoinelame/GazeTracking.git 
-it has gaze tracking and pretrained model [face landmark 
+it has gaze tracking and pretrained model [face landmark detect - shape_predictor_68_face_landmarks.dat]
 
 
 
