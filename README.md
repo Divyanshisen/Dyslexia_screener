@@ -10,7 +10,7 @@
 *pie chart for visual summary of eye movement*
 *saves your result to CSV and allow downloading*
 
-#Setup
+# Setup
 pip install Opencv-python stramlit SpeechRecognition matplotlib pandas 
 install dlib
 git clone https://github.com/antoinelame/GazeTracking.git 
