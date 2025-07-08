@@ -1,6 +1,6 @@
 import streamlit as st # type: ignore
 import cv2  # type: ignore
-from gaze_tracking import GazeTracking # type: ignore
+from GazeTracking.gaze_tracking import GazeTracking
 import   speech_recognition as sr
 from concurrent.futures import ThreadPoolExecutor
 import time
