@@ -81,7 +81,7 @@ with st.expander("What's this?"):
                        gaze_data =gaze_result.result()
                        spoken_text,voice_score = voice_result.result()
 st.divider()
-st.header("✅ Test Results")
+
 
 
 
@@ -92,5 +92,5 @@ st.header("✅ Test Results")
 
                
 
-          
+     
      
