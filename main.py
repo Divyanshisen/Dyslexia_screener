@@ -81,6 +81,21 @@ with st.expander("What's this?"):
                        gaze_data =gaze_result.result()
                        spoken_text,voice_score = voice_result.result()
 st.divider()
+st.header("✔ Test Results")
+gaze_counts = {d: gaze_data.count(d) for d in ["center", "Left", "Right", "Blinking"]}
+col1, col2 = st.columns(2)
+with col1:
+     for key, val in gaze_counts.items():
+          st.metric(f"(key) Looks", val)
+
+with col2:
+     total_words = len(passages[level].split())
+     st.metric("Voice Score", f"(voice_score)/(total_words)")
+     st.write("You said:", spoken_text)
+
+st.subheader("🔍 Your Reading Level")
+if voice_score >= total_words * 0.6 and gaze_counts["center"] > 10:
+     risk = "✅ Low Risk - Clear reading."
 
 
 
