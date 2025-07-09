@@ -83,6 +83,7 @@ with st.expander("What's this?"):
 st.divider()
 st.header("✔ Test Results")
 gaze_counts = {d: gaze_data.count(d) for d in ["center", "Left", "Right", "Blinking"]}
+
 col1, col2 = st.columns(2)
 with col1:
      for key, val in gaze_counts.items():
@@ -96,7 +97,14 @@ with col2:
 st.subheader("🔍 Your Reading Level")
 if voice_score >= total_words * 0.6 and gaze_counts["center"] > 10:
      risk = "✅ Low Risk - Clear reading."
-
+     st.success(risk)
+elif voice_score >= total_words * 0.4 or (gaze_counts["Left"] + gaze_counts["Right"]) > 10:
+     risk = "🟡 Medium Risk - Some struggle."
+        st.warning(risk)
+else:
+ risk = "🔴 High Risk - Possible reading difficulty."
+        st.error(risk)
+save_csv(spoken_text, voice_score, gaze_counts, risk)
 
 
 
