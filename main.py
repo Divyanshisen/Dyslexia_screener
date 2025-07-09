@@ -106,6 +106,22 @@ else:
         st.error(risk)
 save_csv(spoken_text, voice_score, gaze_counts, risk)
 
+st.subheader("👁 Eye Movement Summary")
+fig, ax = plt.subplots()
+ax.pie(gaze_counts.values(), labels=gaze_counts.keys(), autopct='%1.1f%%', colors=['#4CAF50', '#2196F3', '#FF9800', '#9E9E9E'])
+st.pyplot(fig)
+
+df = pd.DataFrame([{
+     "Timestamp":datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+     "Voice Text":spoken_text,
+     "Score": voice_score,
+     "Gaze Summary": gaze_counts,
+     "Risk Level": risk
+}])
+st.download_button("📥 Download Results", df.to_csv(index=False).encode("utf-8"), "dyslexia_test_result.csv", "text/csv")
+st.divider()
+st.caption("🚨 For learning/demo only. Not a diagnosis.")
+
 
 
                                                
