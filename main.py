@@ -84,31 +84,44 @@ if st.button ("Start test"):
          gaze_data =gaze_result.result()
          spoken_text,voice_score = voice_result.result()
      st.divider()
-     st.header("✅  Test Results")
-
+     st.header("✅Test Results")
+     
      gaze_counts = {d: gaze_data.count(d) for d in ["Center", "Left", "Right", "Blinking"]}
      
+     test_duration_sec = 15
+     test_duration_min =test_duration_sec/60
+     total_words =len(passages[level].split())
+     wpm =voice_score/ test_duration_min
+     accuracy = (voice_score /total_words)* 100
+
      col1, col2 = st.columns(2)
      with col1:
           for key, val in gaze_counts.items():
               st.metric(f"{key} Looks", val)
 
      with col2:
-         total_words = len(passages[level].split())
-         st.metric("Voice Score", f"{voice_score}/{total_words}")
-         st.write("You said:", spoken_text)
+          st.metric("Voice Score",f"{voice_score}/{total_words}")
+          st.metric("Reading Speed (WPM)",f"{wpm:.2f}")
+          st.metric("Accuracy",f"{accuracy:.1f}%")
+          st.metric("You said:",spoken_text)
 
      st.subheader("🔍 Your Reading Level")
+
      if voice_score >= total_words * 0.6 and gaze_counts["Center"] > 10:
          risk = "✅ Low Risk - Clear reading."
+         advice = "Your reading flow is strong - keep expanding your vocabulary and challenge yourself with advanced texts."   
          st.success(risk)
      elif voice_score >= total_words * 0.4 or (gaze_counts["Left"] + gaze_counts["Right"]) > 10:
          risk = "🟡 Medium Risk - Some struggle."
+         advice= "Focus on slow ,clear reading and guide your eyeswith finger and practice dailywill build fluency. "
          st.warning(risk)
      else:
          risk = "🔴 High Risk - Possible reading difficulty."
+         advice="Start with simple words and listen-read practice - for better support , consult doctor soon."
          st.error(risk)
-         
+     st.metric("Reading Accuracy",f"{accuracy:.1f}%")
+     st.info(f"📌 {advice}")
+
      save_csv(spoken_text, voice_score, gaze_counts, risk)
 
      st.subheader("👁 Eye Movement Summary")
