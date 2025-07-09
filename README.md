@@ -26,3 +26,5 @@ keep your eyes on screen
 get instant result showing 
 a reading clarity and score risk in csv file 
 
+# Demo Video of how it work :
+"C:\Users\divya\Videos\Screen Recordings\Screen Recording 2025-07-09 230304.mp4"
